@@ -1,0 +1,69 @@
+stages:
+  data_validation:
+    cmd: python src/pipeline/stage_01_data_validation.py
+    deps:
+      - artifacts/data_ingestion
+      - src/pipeline/stage_01_data_validation.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_validation
+
+
+  data_transformation:
+    cmd: python src/pipeline/stage_02_data_transformation.py
+    deps:
+      - artifacts/data_validation
+      - src/pipeline/stage_02_data_transformation.py
+      - config/config.yaml
+    params:
+      - split.split_ratio
+      - split.random_state
+    outs:
+      - artifacts/data_transformation
+
+
+  model_training:
+    cmd: python src/pipeline/stage_03_model_training.py
+    deps:
+      - artifacts/data_transformation
+      - src/pipeline/stage_03_model_training.py
+      - config/config.yaml
+    params:
+      - split.random_state
+      - RandomForestClassifier.n_estimators
+      - RandomForestClassifier.max_leaf_nodes
+      - RandomForestClassifier.max_depth
+    outs:
+      - artifacts/model_training/br_model.joblib
+
+
+  model_evaluation:
+    cmd: python src/pipeline/stage_04_model_evaluation.py
+    deps:
+      - artifacts/data_transformation
+      - artifacts/model_training/br_model.joblib
+      - src/pipeline/stage_04_model_evaluation.py
+      - config/config.yaml
+    outs:
+    - artifacts/model_evaluation/importance.png
+    - artifacts/model_evaluation/live/plots:
+        cache: false
+    metrics:
+    - artifacts/model_evaluation/live/metrics.json:
+        cache: false
+
+
+plots:
+- ROC:
+    template: simple
+    x: fpr
+    y:
+      artifacts/model_evaluation/live/plots/sklearn/roc/train.json: tpr
+      artifacts/model_evaluation/live/plots/sklearn/roc/test.json: tpr
+- Confusion-Matrix:
+    template: confusion
+    x: actual
+    y:
+      artifacts/model_evaluation/live/plots/sklearn/cm/train.json: predicted
+      artifacts/model_evaluation/live/plots/sklearn/cm/test.json: predicted
+- artifacts/model_evaluation/importance.png

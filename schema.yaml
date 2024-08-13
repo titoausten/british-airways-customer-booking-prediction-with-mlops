@@ -1,0 +1,18 @@
+COLUMNS:
+  num_passengers: int64
+  sales_channel: object
+  trip_type: object
+  purchase_lead: int64
+  length_of_stay: int64
+  flight_hour: int64
+  flight_day: object
+  route: object
+  booking_origin: object
+  wants_extra_baggage: int64
+  wants_preferred_seat: int64
+  wants_in_flight_meals: int64
+  flight_duration: float64
+  booking_complete: int64
+
+TARGET_COLUMN:
+  name: booking_complete

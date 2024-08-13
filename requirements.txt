@@ -1,0 +1,31 @@
+imblearn
+fastapi
+uvicorn
+uvloop
+httptools
+boto3
+# uvicorn -w 4 app2:app
+
+flask
+flask_cors
+gunicorn
+# gunicorn -w 4 app:app
+
+numpy
+pandas
+matplotlib
+scikit-learn
+notebook
+python-box==6.0.2
+pyYAML
+tqdm
+ensure==1.0.2
+joblib
+types-PyYAML
+requests
+dvc
+dvc[s3]
+#-e .
+
+
+#tee-dvc-remote-storage

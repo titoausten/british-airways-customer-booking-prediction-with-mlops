@@ -1,0 +1,8 @@
+RandomForestClassifier:
+  n_estimators: 1000
+  max_leaf_nodes: 9
+  max_depth: 8
+
+split:
+  split_ratio: 0.2
+  random_state: 47
