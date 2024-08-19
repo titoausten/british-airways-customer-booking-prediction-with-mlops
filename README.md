@@ -1,5 +1,5 @@
 # Customer Booking Prediction with MLOps
-<img src="artifacts/britishaiways.jpg" alt="workflow" width="100%">
+<img src="artifacts/britishairways.jpg" alt="workflow" width="100%">
 
 
 ## About This Project
