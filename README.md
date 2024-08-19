@@ -3,15 +3,14 @@
 
 
 ## About This Project
-This project utilizes DVC, an MLOPs tool that assists in Machine Learning pipeline management, and AWS to store project data and artifacts for British Airways customer booking details.
+This project leverages Data Version Control (DVC), a cutting-edge MLOps tool, to streamline Machine Learning pipeline management. In conjunction with Amazon Web Services (AWS), it securely stores project data and artifacts related to British Airways customer booking details, ensuring seamless collaboration, version control, and scalability.
 
 ### To run this project, you must have an AWS account.
 
 ## Usage
 1. Clone this repository to your local machine:
 ```
-git clone https://github.com/titoausten/british-airways-customer-booking-prediction-with-mlops
-.git
+git clone https://github.com/titoausten/british-airways-customer-booking-prediction-with-mlops.git
 ```
 
 2. Install requirements:
@@ -45,7 +44,7 @@ dvc repro
 dvc push
 ```
 
-8. Run script: Check S3 bucket for experiment files to confirm push.
+8. Check S3 bucket for experiment files to confirm push.
 
 
 ## License
